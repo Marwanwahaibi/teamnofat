@@ -134,7 +134,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
       <span class="k">12 weeks</span>
       <span class="n h">Moderate</span>
       <span class="s">3 days a week</span>
-      <span class="lbl">Shop Moderate</span>
+      <span class="lbl">Buy Moderate</span>
     </a>
     <div class="info">
       <div><h2>Moderate</h2><div class="meta">Full body · 36 sessions · PDF</div></div>
@@ -147,7 +147,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
       <span class="k">12 weeks</span>
       <span class="n h">Intense</span>
       <span class="s">5 days a week</span>
-      <span class="lbl">Shop Intense</span>
+      <span class="lbl">Buy Intense</span>
     </a>
     <div class="info">
       <div><h2>Intense</h2><div class="meta">Bodybuilding split · 60 sessions · PDF</div></div>
@@ -190,8 +190,8 @@ html[lang=ar] .tile .k{letter-spacing:0}
    Leave a price empty ("") to hide it.
    ================================================================ */
 const STORE = {
-  moderate: { whop: "https://whop.com/", price: "" },
-  intense:  { whop: "https://whop.com/", price: "" }
+  moderate: { whop: "https://whop.com/", price: "$57" },
+  intense:  { whop: "https://whop.com/", price: "$87" }
 };
 document.querySelectorAll('[data-buy]').forEach(a => { a.href = STORE[a.dataset.buy].whop; });
 document.querySelectorAll('[data-price]').forEach(el => { el.textContent = STORE[el.dataset.price].price; });
@@ -201,7 +201,7 @@ const AR = {
 "Plans":"الخطط","FAQ":"الأسئلة","12-week gym programs":"برامج جيم لمدة 12 أسبوع",
 "Pick your plan, download instantly, start this week.":"اختر خطتك، حمّلها فوراً، وابدأ هالأسبوع.",
 "12 weeks":"12 أسبوع","Moderate":"متوسط","Intense":"مكثف","3 days a week":"3 أيام في الأسبوع","5 days a week":"5 أيام في الأسبوع",
-"Shop Moderate":"تسوّق المتوسط","Shop Intense":"تسوّق المكثف",
+"Buy Moderate":"اشترِ المتوسط","Buy Intense":"اشترِ المكثف",
 "Full body · 36 sessions · PDF":"فل بودي · 36 حصة · PDF","Bodybuilding split · 60 sessions · PDF":"تقسيمة بناء أجسام · 60 حصة · PDF",
 "Buy now":"اشترِ الآن","What’s inside":"إيش داخل الخطة",
 "Weeks of planned progression":"أسبوع من التقدم المخطط","Working sets per exercise":"مجموعات أساسية لكل تمرين",
