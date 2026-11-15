@@ -10,6 +10,8 @@
 <meta property="og:image" content="assets/og.jpg">
 <meta name="theme-color" content="#0B0B0B">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="preload" href="assets/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:Anton;src:url(assets/fonts/anton.woff2) format("woff2");font-display:swap}
@@ -172,6 +174,36 @@ footer .fl{display:flex;gap:24px;font-size:13px;color:var(--mute)}
   .mbar.on{transform:none}
   .mbar .btn{width:100%;height:50px}
 }
+
+.lang{font-family:Mono,monospace;font-size:12px;letter-spacing:.08em;height:42px;padding:0 14px;background:transparent;color:var(--bone);border:1px solid rgba(241,237,230,.35);cursor:pointer}
+.lang:hover{border-color:var(--bone)}
+html[lang=ar] .lang{font-family:Cairo,sans-serif;letter-spacing:0}
+html[lang=ar] body{font-family:Cairo,system-ui,sans-serif}
+html[lang=ar] h1,html[lang=ar] h2,html[lang=ar] .card h3,html[lang=ar] .ticker .row span,html[lang=ar] .why .c h3,html[lang=ar] .steps .s h3{font-family:Cairo,sans-serif;font-weight:900;letter-spacing:0;line-height:1.2}
+html[lang=ar] h1{font-size:clamp(52px,8.6vw,132px)}
+html[lang=ar] h2{font-size:clamp(36px,5vw,64px)}
+html[lang=ar] .eyebrow,html[lang=ar] .mono,html[lang=ar] .card .tag,html[lang=ar] .specs span,html[lang=ar] .cmp .h>div,html[lang=ar] .pages figcaption,html[lang=ar] .why .fix b,html[lang=ar] .price small{font-family:Cairo,sans-serif;letter-spacing:0;text-transform:none;font-weight:700}
+html[lang=ar] .eyebrow{font-size:14px}
+html[lang=ar] .logo{font-family:Anton;direction:ltr;display:inline-block}
+html[lang=ar] .ticker .row span{font-size:20px}
+html[dir=rtl] .ticker .row{direction:ltr}
+html[dir=rtl] .hero .bg{transform:scaleX(-1)}
+html[dir=rtl] .btn svg{transform:scaleX(-1)}
+html[dir=rtl] .card .tag{left:auto;right:18px}
+html[dir=rtl] .specs div+div{padding-left:0;border-left:0;padding-right:16px;border-right:1px solid var(--line)}
+html[dir=rtl] .cmp .r>div+div{border-left:0;border-right:1px solid var(--line)}
+html[dir=rtl] .steps .s{padding:34px 0 0 30px}
+html[dir=rtl] .steps .s+.s{padding-left:30px;padding-right:30px;border-left:0;border-right:1px solid var(--line)}
+html[dir=rtl] .feat div{padding:22px 0 0 20px}
+html[dir=rtl] .feat div+div{padding-left:20px;padding-right:20px;border-left:0;border-right:1px solid #D9D3C8}
+html[dir=rtl] .faq details p{padding:0 0 24px 40px}
+@media (max-width:920px){
+  html[lang=ar] .hero h1{font-size:clamp(40px,11vw,56px)}
+  html[lang=ar] h2{font-size:clamp(32px,9vw,46px)}
+  html[dir=rtl] .steps .s,html[dir=rtl] .steps .s+.s{padding:28px 0;border-right:0}
+  html[dir=rtl] .feat div:nth-child(3){padding-right:0;border-right:0}
+  .lang{height:42px;padding:0 12px}
+}
 </style>
 </head>
 <body>
@@ -179,6 +211,7 @@ footer .fl{display:flex;gap:24px;font-size:13px;color:var(--mute)}
   <a href="#top" class="logo" aria-label="TeamNoFat home">TEAM<b>NO</b>FAT</a>
   <div class="links">
     <a href="#programs">Programs</a><a href="#how">How it works</a><a href="#faq">FAQ</a>
+    <button class="lang" id="lang" type="button" aria-label="التحويل إلى العربية">عربي</button>
     <a href="#programs" class="btn">Get your plan</a>
   </div>
 </div></nav>
@@ -320,10 +353,13 @@ const STORE = {
   intense:  { whop: "https://whop.com/", price: "", note: "One-time payment" }
 };
 document.querySelectorAll('[data-buy]').forEach(a => { a.href = STORE[a.dataset.buy].whop; });
-document.querySelectorAll('[data-price]').forEach(el => {
-  const p = STORE[el.dataset.price];
-  if (p.price) el.innerHTML = p.price + '<small>' + p.note + '</small>';
-});
+function renderPrices(){
+  document.querySelectorAll('[data-price]').forEach(el => {
+    const p = STORE[el.dataset.price];
+    if (p.price) el.innerHTML = p.price + '<small>' + (typeof LANG!=='undefined' && LANG==='ar' && AR[p.note] ? AR[p.note] : p.note) + '</small>';
+  });
+}
+renderPrices();
 document.getElementById('yr').textContent = new Date().getFullYear();
 const nav = document.getElementById('nav'), mbar = document.getElementById('mbar');
 const onScroll = () => {
@@ -334,6 +370,36 @@ const onScroll = () => {
 addEventListener('scroll', onScroll, {passive:true}); onScroll();
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ---------- Language switch (EN / AR) ---------- */
+const AR = {"Programs":"البرامج","How it works":"كيف يشتغل","FAQ":"الأسئلة","Get your plan":"احصل على خطتك","12-week gym programs":"برامج جيم لمدة 12 أسبوع","Two hard sets.":"مجموعتين قويتين.","No guesswork.":"بدون تخمين.","A complete 12-week plan that tells you exactly what to lift, how hard to push and when to add weight — every session, every week.":"خطة كاملة لمدة 12 أسبوع تقول لك بالضبط إيش ترفع، وكم تضغط على نفسك، ومتى تزيد الوزن — كل حصة، كل أسبوع.","Choose your plan":"اختر خطتك","See inside the guide":"شوف محتوى الدليل","Instant PDF download":"تحميل فوري للـ PDF","Made for your phone":"مصمم للجوال","Any commercial gym":"يناسب أي جيم","12 weeks":"12 أسبوع","2 working sets":"مجموعتين أساسيتين","5–8 reps":"5–8 تكرارات","3-second lowering":"نزول 3 ثواني","Log every set":"سجّل كل مجموعة","Earn every rep":"استحق كل تكرار","Why it works":"ليش ينجح","Most people train hard.":"أغلب الناس يتمرنون بقوة.","Few train with a plan.":"وقليل منهم يتمرن بخطة.","Random workouts feel productive, but without a structure that moves forward every week, the body has no reason to change.":"التمارين العشوائية تحسسك إنك أنجزت، لكن بدون نظام يتقدم كل أسبوع، جسمك ما عنده سبب يتغير.","No direction":"بدون اتجاه","Different exercises every day, different weights every week. Nothing to beat, so nothing improves.":"تمارين مختلفة كل يوم، وأوزان مختلفة كل أسبوع. ما في رقم تكسره، فما في تطور.","THE FIX":"الحل","Same workouts, 12 weeks":"نفس التمارين لمدة 12 أسبوع","Wrong effort":"جهد غلط","Too easy and the set is wasted. To failure every time and recovery collapses.":"لو سهلة تضيع المجموعة، ولو توصل للفشل كل مرة يتعطل الاستشفاء.","A clear RIR target each week":"هدف RIR واضح كل أسبوع","No record":"بدون تسجيل","If you don’t write it down, you’re guessing — and guessing is how people stay the same for years.":"إذا ما تكتب أرقامك فأنت تخمّن — والتخمين هو اللي يخلي الناس على نفس الحال سنين.","Built-in logs for every set":"سجلات جاهزة لكل مجموعة","The programs":"البرامج","Pick your level":"اختر مستواك","Same rules, same standard. The difference is how many days you train and how close to the limit you go.":"نفس القواعد ونفس المعيار. الفرق في عدد أيام التمرين وكم تقرّب من حدك.","LEVEL 01":"المستوى 01","LEVEL 02":"المستوى 02","12 Weeks":"12 أسبوع","Moderate":"متوسط","Intense":"مكثف","For busy lifters and anyone building a base. Three full-body days a week.":"للمشغولين واللي يبنون أساسهم. 3 أيام فل بودي في الأسبوع.","Days / week":"أيام / أسبوع","Sessions":"حصة","Pages":"صفحة","3 full-body workouts with a swap for every exercise":"3 تمارين فل بودي مع بديل لكل تمرين","Week-by-week effort targets for all 12 weeks":"أهداف جهد لكل أسبوع من الـ 12 أسبوع","Warm-up, tempo and progression rules made simple":"قواعد الإحماء والتمبو والتدرج بشكل مبسّط","Printable session checklist and training logs":"قائمة حصص وسجلات تمرين جاهزة للطباعة","Get Moderate":"احصل على المتوسط","Get Intense":"احصل على المكثف","For experienced lifters ready for a five-day bodybuilding split.":"للمتمرنين أصحاب الخبرة، الجاهزين لتقسيمة بناء أجسام 5 أيام.","5 workouts: chest, back, shoulders, chest & back, legs":"5 تمارين: صدر، ظهر، أكتاف، صدر وظهر، أرجل","Three heavy blocks with built-in recovery weeks":"3 مراحل ثقيلة مع أسابيع استشفاء","Second-set pushes to 1 RIR in the final block":"المجموعة الثانية توصل 1 RIR في المرحلة الأخيرة","Which one is for me?":"أيهم يناسبني؟","Training days":"أيام التمرين","3 per week":"3 في الأسبوع","5 per week":"5 في الأسبوع","Workout style":"نوع التمرين","Full body":"فل بودي","Bodybuilding split":"تقسيمة بناء أجسام","Best for":"الأنسب لـ","Building a base, busy weeks":"بناء الأساس والأسابيع المزدحمة","Experienced lifters":"المتمرنين أصحاب الخبرة","Hardest effort":"أقصى جهد","1–2 RIR on set two":"1–2 RIR في المجموعة الثانية","1 RIR on set two":"1 RIR في المجموعة الثانية","Recovery weeks":"أسابيع الاستشفاء","Steady build":"تصاعد ثابت","Weeks 4 and 8":"الأسبوع 4 و 8","From checkout":"من الدفع","to first set":"إلى أول مجموعة","Pick Moderate or Intense and check out securely through Whop.":"اختر المتوسط أو المكثف وادفع بأمان عن طريق Whop.","Download instantly":"حمّل فوراً","Your PDF is ready right after payment. Save it to your phone or print the logs.":"ملف الـ PDF جاهز مباشرة بعد الدفع. احفظه في جوالك أو اطبع السجلات.","Train and log":"تمرّن وسجّل","Open today’s workout in the gym, follow the page, write down every set. Repeat for 12 weeks.":"افتح تمرين اليوم في الجيم، اتبع الصفحة، وسجّل كل مجموعة. كرر لمدة 12 أسبوع.","Inside the guide":"داخل الدليل","Designed to use":"مصمم تستخدمه","in the gym":"داخل الجيم","Phone-sized pages, one workout per screen, and nothing you have to figure out on the gym floor.":"صفحات بمقاس الجوال، كل تمرين في شاشة وحدة، وما في شي تحتاج تفكر فيه وأنت في الجيم.","The plan at a glance":"الخطة باختصار","Week-by-week targets":"أهداف كل أسبوع","Every workout + swaps":"كل تمرين + البدائل","Printable training logs":"سجلات تمرين للطباعة","Weeks of planned progression":"أسبوع من التقدم المخطط","Working sets per exercise":"مجموعات أساسية لكل تمرين","Swap for every exercise":"بديل لكل تمرين","Guesswork on the gym floor":"تخمين داخل الجيم","Write it down.":"اكتب رقمك.","Beat it next week.":"واكسره الأسبوع الجاي.","That is the whole method. The guide just makes sure you do it right, for 12 weeks straight.":"هذي هي الطريقة كلها. والدليل يتأكد إنك تطبقها صح، 12 أسبوع متواصلة.","Questions":"الأسئلة","Which plan should I start with?":"بأي خطة أبدأ؟","If you train three days a week or you’re still building your base, start with Moderate. If you already train consistently and can commit to five days, go Intense.":"إذا تتمرن 3 أيام في الأسبوع أو لسا تبني أساسك، ابدأ بالمتوسط. وإذا متعود تتمرن بانتظام وتقدر تلتزم 5 أيام، روح للمكثف.","What equipment do I need?":"إيش المعدات اللي أحتاجها؟","A standard commercial gym: barbell, bench, cables, leg press, hack squat and common machines. Every exercise has a listed swap in case your gym doesn’t have it.":"أي جيم تجاري عادي: بار، بنش، كيبلات، ليق بريس، هاك سكوات والأجهزة المعروفة. وكل تمرين له بديل مكتوب لو جيمك ما فيه الجهاز.","How long is each session?":"كم مدة كل حصة؟","Two working sets per exercise keeps sessions focused. Most workouts take roughly 45–75 minutes including warm-up and rest.":"مجموعتين أساسيتين لكل تمرين تخلي الحصة مركزة. أغلب التمارين تاخذ تقريباً 45–75 دقيقة مع الإحماء والراحة.","Is it for men and women?":"يناسب الرجال والنساء؟","Yes. The plan is built on effort targets (RIR), so every lifter chooses loads that fit their own strength.":"نعم. الخطة مبنية على أهداف جهد (RIR)، فكل شخص يختار أوزان تناسب قوته.","How do I get the PDF?":"كيف أستلم ملف الـ PDF؟","Checkout happens on Whop. Right after payment you get access to download the guide, and you can download it again anytime from your Whop account.":"الدفع يتم عن طريق Whop. مباشرة بعد الدفع توصلك صلاحية تحميل الدليل، وتقدر تحمّله مرة ثانية أي وقت من حسابك في Whop.","Can I use it on my phone?":"أقدر أستخدمه من الجوال؟","Yes — the pages are designed in phone format so each workout fits on one screen. The checklist and log pages are also ready to print.":"أكيد — الصفحات مصممة بمقاس الجوال وكل تمرين في شاشة وحدة. وصفحات القائمة والسجلات جاهزة للطباعة.","I have an injury. Is this for me?":"عندي إصابة، يناسبني؟","The programs are for healthy adults. If you have an injury or a medical condition, speak with a qualified clinician before starting.":"البرامج للبالغين الأصحاء. إذا عندك إصابة أو حالة صحية، استشر مختص قبل ما تبدأ.","Start this week":"ابدأ هالأسبوع","Week 1 starts":"الأسبوع الأول يبدأ","with one decision.":"بقرار واحد.","TeamNoFat. Digital products for personal use only. Not medical advice.":"TeamNoFat. منتجات رقمية للاستخدام الشخصي فقط. ليست نصيحة طبية.","One-time payment":"دفعة وحدة","Athlete chalking his hands next to a loaded barbell":"متمرن يجهز يديه بالمغنيسيوم بجانب بار محمّل","Cover of the 12 Weeks Moderate guide":"غلاف دليل 12 أسبوع المتوسط","Cover of the 12 Weeks Intense guide":"غلاف دليل 12 أسبوع المكثف","Plan at a glance page":"صفحة الخطة باختصار","Monthly targets page":"صفحة الأهداف الشهرية","Workout page":"صفحة التمرين","Training log page":"صفحة سجل التمرين","Compare the two programs":"مقارنة بين البرنامجين"};
+const META = {en:{title:document.title,desc:document.querySelector('meta[name=description]').content},
+  ar:{title:"TeamNoFat — برامج جيم لمدة 12 أسبوع",desc:"برنامجين جيم لمدة 12 أسبوع مبنية على قاعدة وحدة: مجموعتين قويتين، تسجلهم وتتقدم فيهم كل أسبوع. تحميل فوري للـ PDF."}};
+const textNodes = [];
+(function collect(){
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {acceptNode:n=>{
+    const t=n.parentNode.nodeName; if(t==='SCRIPT'||t==='STYLE') return NodeFilter.FILTER_REJECT;
+    return AR[n.nodeValue.trim()] ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;}});
+  let n; while((n=w.nextNode())) textNodes.push({n, en:n.nodeValue, key:n.nodeValue.trim()});
+})();
+const attrNodes = [...document.querySelectorAll('[alt],[aria-label]')].flatMap(el=>['alt','aria-label'].filter(a=>el.hasAttribute(a)&&AR[el.getAttribute(a)]).map(a=>({el,a,en:el.getAttribute(a)})));
+var LANG = 'en';
+function setLang(l){
+  LANG = l;
+  document.documentElement.lang = l; document.documentElement.dir = l==='ar'?'rtl':'ltr';
+  textNodes.forEach(o=>{ o.n.nodeValue = l==='ar' ? o.en.replace(o.key, AR[o.key]) : o.en; });
+  attrNodes.forEach(o=>o.el.setAttribute(o.a, l==='ar'?AR[o.en]:o.en));
+  document.title = META[l].title; document.querySelector('meta[name=description]').content = META[l].desc;
+  document.getElementById('lang').textContent = l==='ar' ? 'EN' : 'عربي';
+  document.getElementById('lang').setAttribute('aria-label', l==='ar' ? 'Switch to English' : 'التحويل إلى العربية');
+  renderPrices();
+  try{ localStorage.setItem('tnf-lang', l); }catch(e){}
+}
+document.getElementById('lang').addEventListener('click',()=>setLang(LANG==='ar'?'en':'ar'));
+let start = new URLSearchParams(location.search).get('lang');
+if(!start){ try{ start = localStorage.getItem('tnf-lang'); }catch(e){} }
+if(!start) start = (navigator.language||'').toLowerCase().startsWith('ar') ? 'ar' : 'en';
+if(start==='ar') setLang('ar');
 </script>
 </body>
 </html>
