@@ -190,8 +190,8 @@ html[lang=ar] .tile .k{letter-spacing:0}
    Leave a price empty ("") to hide it.
    ================================================================ */
 const STORE = {
-  moderate: { whop: "https://whop.com/", price: "$57" },
-  intense:  { whop: "https://whop.com/", price: "$87" }
+  moderate: { whop: "https://whop.com/checkout/plan_CkAjWXlUpVpTz", price: "$57" },
+  intense:  { whop: "https://whop.com/checkout/plan_itBcBWnr1fFL6", price: "$87" }
 };
 document.querySelectorAll('[data-buy]').forEach(a => { a.href = STORE[a.dataset.buy].whop; });
 document.querySelectorAll('[data-price]').forEach(el => { el.textContent = STORE[el.dataset.price].price; });
