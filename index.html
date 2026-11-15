@@ -80,19 +80,36 @@ html[lang=ar] .tile .n{font-family:"IBM Plex Sans Arabic",sans-serif;font-weight
 html[lang=ar] .tile .k{letter-spacing:0}
 
 @media (max-width:860px){
-  .wrap{padding:0 18px}
-  nav .wrap{grid-template-columns:1fr auto;height:72px}
+  .wrap{padding:0 16px}
+  nav .wrap{display:flex;justify-content:space-between;height:64px}
   nav .l{display:none}
-  .logo{font-size:28px}
-  .hero{padding:48px 0 150px}
-  .hero p{font-size:16px}
-  .plans{grid-template-columns:1fr;gap:40px;margin-top:-110px}
-  .tile{aspect-ratio:1/.92}
-  .tile .lbl{bottom:22px;font-size:16px;padding:13px 22px}
-  .grid4{grid-template-columns:1fr 1fr;gap:12px}
-  .grid4 div{padding:22px 18px}
-  .sec{padding-top:80px}
-  footer{margin-top:80px}
+  .logo{font-size:26px}
+  .hero{padding:26px 0 112px}
+  .hero h1{font-size:40px}
+  .hero p{font-size:15px;margin-top:10px}
+  .plans{gap:10px;margin-top:-92px}
+  .plans article{display:flex;flex-direction:column}
+  .tile{aspect-ratio:3/3.5}
+  .tile .k{font-size:11px;letter-spacing:.12em}
+  .tile .n{font-size:clamp(28px,9.2vw,40px);margin-top:6px}
+  .tile .s{font-size:13px;margin-top:6px}
+  .tile .lbl{display:none}
+  .info{padding:12px 2px 12px;flex-direction:column;align-items:flex-start;gap:4px}
+  .info h2{font-size:17px}
+  .info .meta{font-size:12.5px;line-height:1.45}
+  .price{font-size:17px}
+  .buy{height:48px;margin-top:auto;font-size:15px}
+  .grid4{grid-template-columns:1fr 1fr;gap:10px}
+  .grid4 div{padding:20px 16px}
+  .grid4 b{font-size:40px}
+  .grid4 span{font-size:14px}
+  .sec{padding-top:72px}
+  .sec h3{font-size:36px}
+  .qs summary{font-size:16px;padding:18px 0}
+  footer{margin-top:72px}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:8px}
+  html[lang=ar] .hero h1{font-size:34px}
+  html[lang=ar] .tile .n{font-size:clamp(30px,10vw,42px)}
 }
 </style>
 </head>
