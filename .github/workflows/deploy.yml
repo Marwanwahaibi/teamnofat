@@ -23,16 +23,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Import website files (first run only)
+      - name: Add missing photos
         run: |
-          if [ ! -f index.html ]; then
-            curl -fsSL -o site.zip "https://d2ol7oe51mr4n9.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/2885a9a1-0dd0-40a9-b05c-dec1f6867e3e.zip"
-            unzip -o site.zip -d .
-            rm site.zip
+          mkdir -p assets/img
+          B="https://d8j0ntlcm91z4.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/hf_20261115_"
+          get() {
+            if [ ! -f "assets/img/$1.jpg" ]; then
+              curl -fsSL -o "/tmp/$1.png" "$B$2.png"
+              ffmpeg -loglevel error -y -i "/tmp/$1.png" -vf "scale='min(1400,iw)':-2" -q:v 3 "assets/img/$1.jpg"
+            fi
+          }
+          get curl 132941_8071bc0f-c3e2-4338-af79-a2aa93f2285e
+          get bench 132941_794763fa-0c7a-4207-9517-5aa5f9d57c57
+          get squat 132940_73f00d44-37d8-44e6-8862-f3ab9d6fd746
+          if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
             git add -A
-            git commit -m "Import TeamNoFat website"
+            git commit -m "Add photos"
             git push
           fi
 
