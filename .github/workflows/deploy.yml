@@ -25,12 +25,13 @@ jobs:
 
       - name: Add missing photos
         run: |
+          pip install --quiet pillow
           mkdir -p assets/img
           B="https://d8j0ntlcm91z4.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/hf_20261115_"
           get() {
             if [ ! -f "assets/img/$1.jpg" ]; then
               curl -fsSL -o "/tmp/$1.png" "$B$2.png"
-              ffmpeg -loglevel error -y -i "/tmp/$1.png" -vf "scale='min(1400,iw)':-2" -q:v 3 "assets/img/$1.jpg"
+              python3 -c "from PIL import Image; im=Image.open('/tmp/$1.png').convert('RGB'); im.thumbnail((1400,1400)); im.save('assets/img/$1.jpg', quality=82, optimize=True)"
             fi
           }
           get curl 132941_8071bc0f-c3e2-4338-af79-a2aa93f2285e
