@@ -13,6 +13,7 @@
 <link rel="apple-touch-icon" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/cff6ae7a-ba25-439d-8e9e-5d4e08e1fb08.png">
 <meta property="og:image" content="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/74c02a6d-935f-49d3-9e4a-0ec5d168dfd0.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="me" href="https://www.instagram.com/teamnofat.tnf">
 <meta name="theme-color" content="#5B86D6">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -91,6 +92,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 footer .logo{font-size:26px}
 footer p{color:var(--soft);font-size:13px}
 footer a,.qs a{color:inherit;text-decoration:underline}
+footer .links{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+footer .links a{display:inline-flex;align-items:center;gap:6px}
+.ig{width:16px;height:16px}
 
 /* arabic */
 html[lang=ar] body,html[lang=ar] .lang{font-family:"IBM Plex Sans Arabic",Inter,sans-serif}
@@ -218,7 +222,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
 
 <footer><div class="wrap">
   <span class="logo">TEAMNOFAT</span>
-  <p><a href="mailto:help@teamnofat.com">help@teamnofat.com</a></p>
+  <p class="links"><a href="https://www.instagram.com/teamnofat.tnf" target="_blank" rel="noopener"><svg class="ig" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>@teamnofat.tnf</a><a href="mailto:help@teamnofat.com">help@teamnofat.com</a></p>
   <p>© 2026 TeamNoFat. Digital products for personal use only. Not medical advice.</p>
 </div></footer>
 
@@ -279,5 +283,6 @@ if(!start){try{start=localStorage.getItem('tnf-lang')}catch(e){}}
 if(!start)start=(navigator.language||'').toLowerCase().startsWith('ar')?'ar':'en';
 if(start==='ar')setLang('ar');
 </script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"TeamNoFat","url":"https://teamnofat.com","email":"help@teamnofat.com","sameAs":["https://www.instagram.com/teamnofat.tnf"]}</script>
 </body>
 </html>
