@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TeamNoFat</title><meta name="robots" content="noindex">
+<script>
+/* Exercise video short links: teamnofat.com/v/<name>
+   To change a video, replace its YouTube ID below. */
+var V = {
+  "bench-press": "BqYsKRzc0wM",
+  "incline-chest-press": "EGAZDVz8bW4",
+  "pec-deck": "Dbly77Jgbo8",
+  "dips": "hsEKg3M45dc",
+  "rope-pushdown": "mRmIthbCSNI",
+  "overhead-extension": "KvrP8c6eVBc",
+  "lat-pulldown": "von4DUh9soE",
+  "t-bar-row": "A0at3sCMsII",
+  "cable-row": "7BkgqzC6WsM",
+  "pull-up": "rmdn5X_KLkY",
+  "hammer-curl": "G7hy-AxQwcQ",
+  "ez-bar-curl": "SDFZBaJcTsU",
+  "shoulder-press": "3R14MnZbcpw",
+  "lateral-raise": "qitQHqNZbeM",
+  "reverse-pec-deck": "dC7jhEk-29A",
+  "front-raise": "qmFQTDYwpsg",
+  "shrug": "8L6zjxBwVzM",
+  "cable-crunch": "AV5PmZJIrrw",
+  "close-grip-bench": "F41KvResGKo",
+  "incline-curl": "1gCfaEWk_Ds",
+  "hack-squat": "fE5BWPy7uRc",
+  "romanian-deadlift": "ONRqGq2bK-w",
+  "leg-extension": "FIgDS4Nbh6Q",
+  "leg-curl": "Wy1SwoY2aaQ",
+  "leg-press": "K5n2vg3oZa4",
+  "calf-raise": "6O5hh1rBtx8",
+  "leg-raise": "-LHetdLNhjI"
+};
+var p = location.pathname.replace(/\/+$/,'').split('/');
+if (p[1] === 'v' && V[p[2]]) { location.replace('https://www.youtube.com/watch?v=' + V[p[2]]); }
+else { location.replace('/'); }
+</script>
+<style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;height:100vh;margin:0;color:#6B6B6B}</style>
+</head><body>Loading…</body></html>
