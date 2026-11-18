@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TeamNoFat — 12-Week Gym Programs</title>
+<title>TeamNoFat | 12-Week Gym Programs</title>
 <meta name="description" content="Two 12-week gym programs. Pick Moderate (3 days) or Intense (5 days) and download instantly.">
-<meta property="og:title" content="TeamNoFat — 12-Week Gym Programs">
+<meta property="og:title" content="TeamNoFat | 12-Week Gym Programs">
 <meta property="og:description" content="Pick your plan, download instantly, start this week.">
 <meta name="theme-color" content="#5B7FD6">
 <link rel="icon" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/7f638461-bf25-4f8c-a24d-28db61aff858.png" type="image/png" sizes="64x64">
@@ -63,6 +63,13 @@ nav .r{display:flex;justify-content:flex-end}
 .grid4 div{background:var(--grey);padding:28px 24px}
 .grid4 b{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:48px;line-height:1;display:block}
 .grid4 span{display:block;color:var(--soft);font-size:15px;margin-top:8px}
+
+/* price + peek */
+.pr{text-align:end}
+.omr{font-size:12.5px;color:var(--soft);margin-top:2px;white-space:nowrap}
+.peek{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.peek img{width:100%;height:auto;display:block;border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.06)}
+@media (max-width:860px){.peek{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-top:28px;padding-bottom:6px}.peek img{scroll-snap-align:start}.omr{font-size:11.5px}}
 
 /* about */
 .about{max-width:760px;text-align:center}
@@ -149,7 +156,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
     </a>
     <div class="info">
       <div><h2>Moderate</h2><div class="meta">Full body · 36 sessions · PDF</div></div>
-      <div class="price" data-price="moderate"></div>
+      <div class="pr"><div class="price" data-price="moderate"></div><div class="omr">≈ 22 OMR</div></div>
     </div>
     <a class="buy" data-buy="moderate" href="#" target="_blank" rel="noopener">Buy now</a>
   </article>
@@ -162,7 +169,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
     </a>
     <div class="info">
       <div><h2>Intense</h2><div class="meta">Bodybuilding split · 60 sessions · PDF</div></div>
-      <div class="price" data-price="intense"></div>
+      <div class="pr"><div class="price" data-price="intense"></div><div class="omr">≈ 33.5 OMR</div></div>
     </div>
     <a class="buy" data-buy="intense" href="#" target="_blank" rel="noopener">Buy now</a>
   </article>
@@ -173,8 +180,17 @@ html[lang=ar] .tile .k{letter-spacing:0}
   <div class="grid4">
     <div><b>12</b><span>Weeks of planned progression</span></div>
     <div><b>2</b><span>Working sets per exercise</span></div>
-    <div><b>1</b><span>Swap for every exercise</span></div>
+    <div><b>1</b><span>Swap and a video demo for every exercise</span></div>
     <div><b>PDF</b><span>Phone-ready pages and printable logs</span></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h3 class="h">Look inside</h3>
+  <div class="peek">
+    <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/d6ff89fb-5861-4e16-b18e-e83101526037.jpg" alt="Intense plan overview page" loading="lazy">
+    <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/c9590bb8-c85e-47f9-a1a1-3df69aca4df5.jpg" alt="Moderate workout page with video codes" loading="lazy">
+    <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jh0CPxpJbhz8EelwpM3LsbJtTr/044e2ce9-33af-4c7e-8ff2-0d11da95947d.jpg" alt="Intense month targets page" loading="lazy">
   </div>
 </div></section>
 
@@ -182,7 +198,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
   <h3 class="h">About us</h3>
   <p>We’re TeamNoFat, a group of experienced bodybuilders who’ve spent years learning what actually builds muscle and what just wastes your time.</p>
   <p>We took everything that worked for us, the training, the mistakes and the lessons, and squeezed it into simple 12-week plans. No guesswork, no random programs, no paying for things that don’t deliver.</p>
-  <p class="end">You bring the effort. We already did the thinking.</p>
+  <p class="end">All you have to do is show up and follow the plan.</p>
 </div></section>
 
 <section class="sec" id="faq"><div class="wrap">
@@ -191,6 +207,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
     <details><summary>Which plan should I start with?</summary><p>If you train three days a week or you’re still building your base, start with Moderate. If you already train consistently and can commit to five days, go Intense.</p></details>
     <details><summary>What equipment do I need?</summary><p>A standard commercial gym. Every exercise has a listed swap in case your gym doesn’t have the machine.</p></details>
     <details><summary>How do I get the PDF?</summary><p>Checkout happens on Whop. Right after payment you can download the guide, and you can download it again anytime from your Whop account.</p></details>
+    <details><summary>Are there exercise videos?</summary><p>Yes. Every exercise in the PDF links to a short video demo. Tap the exercise name on your phone, or scan the code next to it if you print the plan.</p></details>
     <details><summary>Is it for men and women?</summary><p>Yes. The plan is built on effort targets, so every lifter chooses loads that fit their own strength.</p></details>
     <details><summary>I have an injury. Is this for me?</summary><p>The programs are for healthy adults. If you have an injury or a medical condition, speak with a qualified clinician before starting.</p></details>
   </div>
@@ -204,7 +221,7 @@ html[lang=ar] .tile .k{letter-spacing:0}
 
 <script>
 /* ================================================================
-   EDIT HERE — paste your Whop checkout links and prices.
+   EDIT HERE: paste your Whop checkout links and prices.
    Leave a price empty ("") to hide it.
    ================================================================ */
 const STORE = {
@@ -223,11 +240,11 @@ const AR = {
 "Full body · 36 sessions · PDF":"فل بودي · 36 حصة · PDF","Bodybuilding split · 60 sessions · PDF":"تقسيمة بناء أجسام · 60 حصة · PDF",
 "Buy now":"اشترِ الآن","What’s inside":"إيش داخل الخطة",
 "Weeks of planned progression":"أسبوع من التقدم المخطط","Working sets per exercise":"مجموعات أساسية لكل تمرين",
-"Swap for every exercise":"بديل لكل تمرين","Phone-ready pages and printable logs":"صفحات بمقاس الجوال وسجلات للطباعة",
+"Swap and a video demo for every exercise":"بديل وفيديو شرح لكل تمرين","Look inside":"شوف من الداخل","≈ 22 OMR":"≈ 22 ر.ع","≈ 33.5 OMR":"≈ 33.5 ر.ع","Are there exercise videos?":"فيه فيديوهات للتمارين؟","Yes. Every exercise in the PDF links to a short video demo. Tap the exercise name on your phone, or scan the code next to it if you print the plan.":"نعم. كل تمرين في الملف مربوط بفيديو شرح قصير. اضغط على اسم التمرين من جوالك، أو امسح الكود اللي جنبه لو طبعت الخطة.","Phone-ready pages and printable logs":"صفحات بمقاس الجوال وسجلات للطباعة",
 "About":"من نحن","About us":"من نحن",
 "We’re TeamNoFat, a group of experienced bodybuilders who’ve spent years learning what actually builds muscle and what just wastes your time.":"إحنا TeamNoFat، مجموعة لاعبين كمال أجسام بخبرة سنين في التمرين، عرفنا فيها إيش اللي يبني عضل فعلاً وإيش اللي يضيّع وقتك.",
 "We took everything that worked for us, the training, the mistakes and the lessons, and squeezed it into simple 12-week plans. No guesswork, no random programs, no paying for things that don’t deliver.":"عصرنا خبرتنا كلها، اللي نجح معنا والأخطاء اللي تعلمنا منها، وحطيناها في برامج 12 أسبوع بسيطة وواضحة. لا تخمين، ولا برامج عشوائية، ولا فلوس تروح على شي ما يفيدك.",
-"You bring the effort. We already did the thinking.":"عليك الجهد، والتفكير خلصناه عنك.",
+"All you have to do is show up and follow the plan.":"عليك بس تلتزم وتمشي على الخطة.",
 "Questions":"الأسئلة","Which plan should I start with?":"بأي خطة أبدأ؟",
 "If you train three days a week or you’re still building your base, start with Moderate. If you already train consistently and can commit to five days, go Intense.":"إذا تتمرن 3 أيام في الأسبوع أو لسا تبني أساسك، ابدأ بالمتوسط. وإذا متعود تتمرن بانتظام وتقدر تلتزم 5 أيام، روح للمكثف.",
 "What equipment do I need?":"إيش المعدات اللي أحتاجها؟",
@@ -241,7 +258,7 @@ const AR = {
 "© 2026 TeamNoFat. Digital products for personal use only. Not medical advice.":"© 2026 TeamNoFat. منتجات رقمية للاستخدام الشخصي فقط. ليست نصيحة طبية."
 };
 const META = {en:{t:document.title,d:document.querySelector('meta[name=description]').content},
-  ar:{t:"TeamNoFat — برامج جيم لمدة 12 أسبوع",d:"برنامجين جيم لمدة 12 أسبوع. اختر المتوسط (3 أيام) أو المكثف (5 أيام) وحمّل فوراً."}};
+  ar:{t:"TeamNoFat | برامج جيم لمدة 12 أسبوع",d:"برنامجين جيم لمدة 12 أسبوع. اختر المتوسط (3 أيام) أو المكثف (5 أيام) وحمّل فوراً."}};
 const nodes=[];
 (function(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const t=n.parentNode.nodeName;if(t==='SCRIPT'||t==='STYLE')return NodeFilter.FILTER_REJECT;return AR[n.nodeValue.trim()]?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP;}});let n;while((n=w.nextNode()))nodes.push({n,en:n.nodeValue,k:n.nodeValue.trim()});})();
 let LANG='en';
