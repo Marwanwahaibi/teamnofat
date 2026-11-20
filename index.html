@@ -245,7 +245,7 @@ document.querySelectorAll('[data-price]').forEach(el => { el.textContent = STORE
 
 /* ---------- Language switch (EN / AR) ---------- */
 const AR = {
-"Plans":"الخطط","FAQ":"الأسئلة","12-week gym programs":"برامج جيم لمدة 12 أسبوع",
+"Plans":"الخطط","FAQ":"الأسئلة","12-week gym programs":"برامج تمارين لمدة 12 أسبوع",
 "Pick your plan, download instantly, start this week.":"اختر خطتك، حمّلها فوراً، وابدأ هالأسبوع.",
 "12 weeks":"12 أسبوع","Moderate":"متوسط","Intense":"مكثف","3 days a week":"3 أيام في الأسبوع","5 days a week":"5 أيام في الأسبوع",
 "Buy Moderate":"اشترِ المتوسط","Buy Intense":"اشترِ المكثف",
@@ -272,7 +272,7 @@ const AR = {
 "© 2026 TeamNoFat. Digital products for personal use only. Not medical advice.":"© 2026 TeamNoFat. منتجات رقمية للاستخدام الشخصي فقط. ليست نصيحة طبية."
 };
 const META = {en:{t:document.title,d:document.querySelector('meta[name=description]').content},
-  ar:{t:"TeamNoFat | برامج جيم لمدة 12 أسبوع",d:"برنامجين جيم لمدة 12 أسبوع. اختر المتوسط (3 أيام) أو المكثف (5 أيام) وحمّل فوراً."}};
+  ar:{t:"TeamNoFat | برامج تمارين لمدة 12 أسبوع",d:"برنامجين تمارين لمدة 12 أسبوع. اختر المتوسط (3 أيام) أو المكثف (5 أيام) وحمّل فوراً."}};
 const nodes=[];
 (function(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const t=n.parentNode.nodeName;if(t==='SCRIPT'||t==='STYLE')return NodeFilter.FILTER_REJECT;return AR[n.nodeValue.trim()]?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP;}});let n;while((n=w.nextNode()))nodes.push({n,en:n.nodeValue,k:n.nodeValue.trim()});})();
 let LANG='en';
