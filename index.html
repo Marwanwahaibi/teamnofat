@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X2Z8WXH5GY"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X2Z8WXH5GY');</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TeamNoFat | 12-Week Gym Programs</title>
@@ -240,7 +242,7 @@ const STORE = {
   moderate: { whop: "https://whop.com/checkout/plan_CkAjWXlUpVpTz", price: "$57" },
   intense:  { whop: "https://whop.com/checkout/plan_itBcBWnr1fFL6", price: "$87" }
 };
-document.querySelectorAll('[data-buy]').forEach(a => { a.href = STORE[a.dataset.buy].whop; });
+document.querySelectorAll('[data-buy]').forEach(a => { a.href = STORE[a.dataset.buy].whop; a.addEventListener('click', () => { try { gtag('event','begin_checkout',{currency:'USD',value:parseFloat(STORE[a.dataset.buy].price.replace('$',''))||0,items:[{item_id:a.dataset.buy,item_name:a.dataset.buy==='intense'?'Intense 12-week plan':'Moderate 12-week plan'}]}); } catch(e){} }); });
 document.querySelectorAll('[data-price]').forEach(el => { el.textContent = STORE[el.dataset.price].price; });
 
 /* ---------- Language switch (EN / AR) ---------- */
